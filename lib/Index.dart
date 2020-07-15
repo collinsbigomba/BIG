@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(Hem());
@@ -12,18 +10,16 @@ class Hem extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                Color.fromARGB(195, 20, 50, 1),
-                Color.fromARGB(36, 11, 54, 1)
-              ])),
+            image: DecorationImage(image: AssetImage('crowd-1056764__340.webp'),fit: BoxFit.cover),
+             
+              ),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height:10),
+                SizedBox(height: 10),
                 Navbar(),
                 Padding(
                   padding:
@@ -70,7 +66,17 @@ class _DesktopNavbarState extends State<DesktopNavbar> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(20),
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(48),
+          boxShadow: [
+            BoxShadow(
+                offset: Offset(0, -2),
+                blurRadius: 30,
+                color: Colors.black.withOpacity(0.18))
+          ]),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -84,7 +90,7 @@ class _DesktopNavbarState extends State<DesktopNavbar> {
               RaisedButton(
                   child: Text(
                     'Home',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                   ),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15))),
@@ -95,12 +101,13 @@ class _DesktopNavbarState extends State<DesktopNavbar> {
               RaisedButton(
                   child: Text(
                     'About Us',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                   ),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15))),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUs()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AboutUs()));
                   }),
               SizedBox(
                 width: 30,
@@ -108,12 +115,13 @@ class _DesktopNavbarState extends State<DesktopNavbar> {
               RaisedButton(
                   child: Text(
                     'Porfolio',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                   ),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15))),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Portfolio()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Portfolio()));
                   }),
               SizedBox(
                 width: 30,
@@ -121,12 +129,13 @@ class _DesktopNavbarState extends State<DesktopNavbar> {
               RaisedButton(
                   child: Text(
                     'Get Started',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                   ),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15))),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => GetStarted()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => GetStarted()));
                   }),
               SizedBox(
                 width: 30,
@@ -148,72 +157,86 @@ class _MobileNavbarState extends State<MobileNavbar> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        margin: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(48),
+            boxShadow: [
+              BoxShadow(
+                  offset: Offset(0, -2),
+                  blurRadius: 30,
+                  color: Colors.black.withOpacity(0.18))
+            ]),
         child: Column(children: [
-      Text(
-        'CollinsBigombas Music Studio',
-        style: TextStyle(
-            fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            RaisedButton(
-                child: Text(
-                  'Home',
-                  style: TextStyle(color: Colors.white),
+          Text(
+            'CollinsBigombas Music Studio',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: Colors.black, fontSize: 30),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RaisedButton(
+                    child: Text(
+                      'Home',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    onPressed: () {}),
+                SizedBox(
+                  width: 30,
                 ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                onPressed: () {}),
-            SizedBox(
-              width: 30,
-            ),
-            RaisedButton(
-                child: Text(
-                  'About Us',
-                  style: TextStyle(color: Colors.white),
+                RaisedButton(
+                    child: Text(
+                      'About Us',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => AboutUs()));
+                    }),
+                SizedBox(
+                  width: 30,
                 ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                onPressed: () {
-                  
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUs()));
-                }),
-            SizedBox(
-              width: 30,
-            ),
-            RaisedButton(
-                child: Text(
-                  'Porfolio',
-                  style: TextStyle(color: Colors.white),
+                RaisedButton(
+                    child: Text(
+                      'Porfolio',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Portfolio()));
+                    }),
+                SizedBox(
+                  width: 30,
                 ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                onPressed: () {
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => Portfolio()));
-                }),
-            SizedBox(
-              width: 30,
-            ),
-            RaisedButton(
-                child: Text(
-                  'Get Started',
-                  style: TextStyle(color: Colors.white),
+                RaisedButton(
+                    child: Text(
+                      'Get Started',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => GetStarted()));
+                    }),
+                SizedBox(
+                  width: 30,
                 ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                onPressed: () {
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => GetStarted()));
-                }),
-            SizedBox(
-              width: 30,
+              ],
             ),
-          ],
-        ),
-      ),
-    ]));
+          ),
+        ]));
   }
 }
 
@@ -241,9 +264,9 @@ class LandingPage extends StatelessWidget {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.symmetric(vertical:20.0),
+        padding: const EdgeInsets.symmetric(vertical: 20.0),
         child: Image.asset(
-          'assets/wolf.webp',
+          'assets/bokeh-2097345__340.webp',
           width: width,
         ),
       ),
@@ -278,12 +301,13 @@ class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-
-        ],
+      appBar: AppBar(
+        title: Text("About US"),
+        centerTitle: true,
       ),
-      
+      body: ListView(
+        children: [],
+      ),
     );
   }
 }
@@ -297,7 +321,11 @@ class _PortfolioState extends State<Portfolio> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        title: Text("Portfolio"),
+        centerTitle: true,
+        actions: [],
+      ),
     );
   }
 }
@@ -311,7 +339,13 @@ class _GetStartedState extends State<GetStarted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        title: Text("Get Started"),
+        centerTitle: true,
+      ),
+      body: ListView(
+        children: [],
+      ),
     );
   }
 }

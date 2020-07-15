@@ -1,6 +1,6 @@
 
-//import 'package:eva_webs/Index.dart';
-import 'package:eva_webs/index.dart';
+import 'package:eva_webs/Index.dart';
+//import 'package:eva_webs/index.dart';
 
 import 'package:flutter/material.dart';
 
@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: //Hem()
-        Home()
+        home: Hem()
+        //Home()
         
         );
   }
