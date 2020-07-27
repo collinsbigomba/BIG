@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() => runApp(Hem());
 
@@ -13,9 +14,10 @@ class Hem extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage('crowd-1056764__340.webp'),fit: BoxFit.cover),
-             
-              ),
+            image: DecorationImage(
+                image: AssetImage('crowd-1056764__340.webp'),
+                fit: BoxFit.cover),
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -265,9 +267,12 @@ class LandingPage extends StatelessWidget {
       ),
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0),
-        child: Image.asset(
-          'assets/bokeh-2097345__340.webp',
-          width: width,
+        child: Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
+          child: Image.asset(
+            'assets/bokeh-2097345__340.webp',
+            width: width,
+          ),
         ),
       ),
     ];
@@ -303,6 +308,7 @@ class _AboutUsState extends State<AboutUs> {
     return Scaffold(
       appBar: AppBar(
         title: Text("About US"),
+        backgroundColor: Colors.blue,
         centerTitle: true,
       ),
       body: ListView(
@@ -323,6 +329,7 @@ class _PortfolioState extends State<Portfolio> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Portfolio"),
+        backgroundColor: Colors.blue,
         centerTitle: true,
         actions: [],
       ),
@@ -336,15 +343,196 @@ class GetStarted extends StatefulWidget {
 }
 
 class _GetStartedState extends State<GetStarted> {
+  String _firstName;
+  String _lastName;
+  String _email;
+  String _password;
+  String _phoneNumber;
+
+  final GlobalKey<FormState> _formkey = GlobalKey<
+      FormState>(); //using global key which is the standard way of using forms in flutter
+
+  Widget _buildfirstName() {
+    //functions that return widgets
+    return TextFormField(
+        decoration: InputDecoration(
+          icon: Icon(Icons.perm_identity),
+          labelText: 'FirstName',
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        ),
+        maxLength: 12,
+        validator: (String value) {
+          if (value.isEmpty) {
+            return "FirstName is required";
+          }
+          return null;
+        },
+        onSaved: (String value) {
+          _firstName = value; // set the state
+        });
+  }
+
+  Widget _buildlastName() {
+    return TextFormField(
+        decoration: InputDecoration(
+          icon: Icon(Icons.perm_identity),
+          labelText: 'lastName',
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        ),
+        maxLength: 12,
+        validator: (String value) {
+          if (value.isEmpty) {
+            return "lastName is required";
+          }
+          return null;
+        },
+        onSaved: (String value) {
+          _lastName = value; // set the state
+        });
+  }
+
+  Widget _buildemail() {
+    return TextFormField(
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          icon: Icon(Icons.email),
+          hintText: 'collinsbigomba8@gmail.com',
+          labelText: 'Email',
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        ),
+        maxLength: 30,
+        validator: (String value) {
+          if (value.isEmpty) {
+            return "Email is required";
+          }
+          //if(!RegExp(^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$).hasMatch(value)) {
+          //return 'please enter a valid Email';
+          //}
+          return null;
+        },
+        onSaved: (String value) {
+          _email = value; // set the state
+        });
+  }
+
+  Widget _buildpassword() {
+    return TextFormField(
+        keyboardType: TextInputType.visiblePassword,
+        obscureText: true,
+        decoration: InputDecoration(
+          icon: Icon(Icons.phonelink_lock),
+          labelText: 'password',
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        maxLength: 15,
+        validator: (String value) {
+          if (value.isEmpty) {
+            return "password is required";
+          }
+          return null;
+        },
+        onSaved: (String value) {
+          _password = value; // set the state
+        });
+  }
+
+  Widget _buildphoneNumber() {
+    return TextFormField(
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          icon: Icon(Icons.phone),
+          labelText: 'phoneNumber',
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        ),
+        maxLength: 10,
+        validator: (String value) {
+          if (value.isEmpty) {
+            return "phonenumber is required";
+          }
+          return null;
+        },
+        onSaved: (String value) {
+          _phoneNumber = value; // set the state
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Get Started"),
+        backgroundColor: Colors.blue,
         centerTitle: true,
       ),
       body: ListView(
-        children: [],
+        children: [
+          Container(
+            margin: EdgeInsets.all(25),
+            child: Center(
+              child: Form(
+                key: _formkey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 75,
+                      child: Icon(
+                        FontAwesomeIcons.bitcoin,
+                        color: Colors.deepOrange,
+                        size: 50,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    _buildfirstName(),
+                    _buildlastName(),
+                    _buildemail(),
+                    _buildpassword(),
+                    _buildphoneNumber(),
+                    RaisedButton(
+                        hoverColor: Colors.yellow,
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        elevation: 5,
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 19,
+                          ),
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                10))), //rounded edges of the button
+                        onPressed: () {
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                              content:
+                                  Text('Signing In, Please Wait.....')));
+                          if (!_formkey.currentState.validate()) {
+                            //form to validate itself
+                            return;
+                          }
+                          _formkey.currentState
+                              .save(); // saves data entered and wenever the .save function is called, it  calls the onsaved method on each function
+
+                          print(_firstName);
+                          print(_lastName);
+                          print(_email);
+                          print(_password);
+                          print(_phoneNumber);
+                          //signUp();
+
+                          //gets u to the home screen
+                        }),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
