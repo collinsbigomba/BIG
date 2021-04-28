@@ -1,5 +1,15 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+var bannerItems = ['Reharsals', 'Shows', 'Competitions', 'Events', 'Entertainment'];
+var bannerImage = [
+  'assets/bokeh-2097345__340.webp',
+  'assets/crowd-1056764__340.webp',
+  'assets/guitar-832890__340.webp',
+  'assets/istockphoto-1174207130-1024*1024.jpg',
+  'assets/musician-3312104__340.webp',
+];
 
 void main() => runApp(Hem());
 
@@ -312,7 +322,36 @@ class _AboutUsState extends State<AboutUs> {
         centerTitle: true,
       ),
       body: ListView(
-        children: [],
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              gradient: LinearGradient(
+                //black  shadow on page
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.transparent, Colors.black87],
+              ),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Carousel(
+                dotHorizontalPadding: 12,
+                boxFit: BoxFit.cover,
+                images: [
+                  Image.asset('assets/bokeh-2097345__340.webp'),
+                  Image.asset('assets/crowd-1056764__340.webp'),
+                  Image.asset('assets/guitar-832890__340.webp'),
+                  Image.asset('assets/istockphoto-1174207130-1024*1024.jpg'),
+                  Image.asset('assets/musician-3312104__340.webp'),
+                 
+                ],
+                animationCurve: Curves.fastOutSlowIn,
+                animationDuration: Duration(milliseconds: 2000),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -333,9 +372,92 @@ class _PortfolioState extends State<Portfolio> {
         centerTitle: true,
         actions: [],
       ),
+      body: ListView(
+        children: [
+          BannerWidgetArea(),
+          Spacer(),
+        ],
+      ),
     );
   }
 }
+
+class BannerWidgetArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var screenwidth = MediaQuery.of(context).size.width;
+
+    PageController controller =
+        PageController(viewportFraction: 0.8, initialPage: 1);
+
+    List<Widget> banners = List<Widget>();
+
+    for (int x = 0; x < bannerItems.length; x++) {
+      var bannerView = Padding(
+        padding: EdgeInsets.all(10),
+        child: Container(
+          child: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    boxShadow: [
+                      BoxShadow(
+                          //shadow behind pageview
+                          color: Colors.black54,
+                          offset: Offset(4, 4),
+                          blurRadius: 5,
+                          spreadRadius: 3)
+                    ]),
+              ),
+              ClipRRect(
+                child: Image.asset(
+                  bannerImage[x],
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    gradient: LinearGradient(
+                        //black  shadow on page
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Colors.transparent, Colors.black87])),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      bannerItems[x],
+                      style: TextStyle(fontSize: 25, color: Colors.white),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      );
+      banners.add(bannerView);
+    }
+    return Container(
+      width: screenwidth,
+      height: screenwidth * 9 / 16,
+      child: PageView(
+        controller: controller,
+        scrollDirection: Axis.horizontal,
+        children: banners,
+      ),
+    );
+  }
+}
+
 
 class GetStarted extends StatefulWidget {
   @override
@@ -493,40 +615,41 @@ class _GetStartedState extends State<GetStarted> {
                     _buildemail(),
                     _buildpassword(),
                     _buildphoneNumber(),
-                    RaisedButton(
-                        hoverColor: Colors.yellow,
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        elevation: 5,
-                        child: Text(
-                          'Login',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 19,
+                    Builder(
+                      builder: (context) => RaisedButton(
+                          hoverColor: Colors.yellow,
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          elevation: 5,
+                          child: Text(
+                            'Login',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 19,
+                            ),
                           ),
-                        ),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(
-                                10))), //rounded edges of the button
-                        onPressed: () {
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                              content:
-                                  Text('Signing In, Please Wait.....')));
-                          if (!_formkey.currentState.validate()) {
-                            //form to validate itself
-                            return;
-                          }
-                          _formkey.currentState
-                              .save(); // saves data entered and wenever the .save function is called, it  calls the onsaved method on each function
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  10))), //rounded edges of the button
+                          onPressed: () {
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                                content: Text('Signing In, Please Wait.....')));
+                            if (!_formkey.currentState.validate()) {
+                              //form to validate itself
+                              return;
+                            }
+                            _formkey.currentState
+                                .save(); // saves data entered and wenever the .save function is called, it  calls the onsaved method on each function
 
-                          print(_firstName);
-                          print(_lastName);
-                          print(_email);
-                          print(_password);
-                          print(_phoneNumber);
-                          //signUp();
+                            print(_firstName);
+                            print(_lastName);
+                            print(_email);
+                            print(_password);
+                            print(_phoneNumber);
+                            //signUp();
 
-                          //gets u to the home screen
-                        }),
+                            //gets u to the home screen
+                          }),
+                    ),
                   ],
                 ),
               ),

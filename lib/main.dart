@@ -1,4 +1,3 @@
-
 import 'package:eva_webs/Index.dart';
 //import 'package:eva_webs/index.dart';
 
@@ -19,7 +18,8 @@ class MyApp extends StatelessWidget {
         ),
         home: Hem()
         //Home()
-        
+
         );
   }
 }
+//wildsafariswebapp

@@ -391,7 +391,8 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 10),
                     OutlineButton(
                         child: Text(
-                          'View Safari',style: TextStyle(color:Colors.red),
+                          'View Safari',
+                          style: TextStyle(color: Colors.red),
                         ),
                         onPressed: () {}),
                     SizedBox(height: 10),
@@ -412,7 +413,12 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 10),
                     Text('Gorilla trekking Bwindi'),
                     SizedBox(height: 10),
-                    OutlineButton(child: Text('View Safari',style: TextStyle(color:Colors.red),), onPressed: () {}),
+                    OutlinedButton(
+                        child: Text(
+                          'View Safari',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        onPressed: () {}),
                     SizedBox(height: 10),
                   ],
                 ),
@@ -433,7 +439,12 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 10),
                     Text('Gorilla trekking Bwindi'),
                     SizedBox(height: 10),
-                    OutlineButton(child: Text('View Safari',style: TextStyle(color:Colors.red),), onPressed: () {}),
+                    OutlinedButton(
+                        child: Text(
+                          'View Safari',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        onPressed: () {}),
                     SizedBox(height: 10),
                   ],
                 ),
@@ -454,7 +465,12 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 10),
                     Text('Gorilla trekking Bwindi'),
                     SizedBox(height: 10),
-                    OutlineButton(child: Text('View Safari',style: TextStyle(color:Colors.red),), onPressed: () {}),
+                    OutlinedButton(
+                        child: Text(
+                          'View Safari',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        onPressed: () {}),
                     SizedBox(height: 10),
                   ],
                 ),
@@ -483,8 +499,9 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 10),
                     Text('Gorilla trekking Bwindi'),
                     SizedBox(height: 10),
-                    OutlineButton(
-                        child: Text('View Safari', style: TextStyle(color: Colors.red)),
+                    OutlinedButton(
+                        child: Text('View Safari',
+                            style: TextStyle(color: Colors.red)),
                         onPressed: () {}),
                     SizedBox(height: 10),
                   ],
@@ -504,7 +521,12 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 10),
                     Text('Gorilla trekking Bwindi'),
                     SizedBox(height: 10),
-                    OutlineButton(child: Text('View Safari',style: TextStyle(color:Colors.red),), onPressed: () {}),
+                    OutlinedButton(
+                        child: Text(
+                          'View Safari',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        onPressed: () {}),
                     SizedBox(height: 10),
                   ],
                 ),
@@ -529,7 +551,12 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 10),
                     Text('Gorilla trekking Bwindi'),
                     SizedBox(height: 10),
-                    OutlineButton(child: Text('View Safari',style: TextStyle(color:Colors.red),), onPressed: () {}),
+                    OutlinedButton(
+                        child: Text(
+                          'View Safari',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        onPressed: () {}),
                     SizedBox(height: 10),
                   ],
                 ),
@@ -550,7 +577,12 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 10),
                     Text('Gorilla trekking Bwindi'),
                     SizedBox(height: 10),
-                    OutlineButton(child: Text('View Safari',style: TextStyle(color:Colors.red),), onPressed: () {}),
+                    OutlinedButton(
+                        child: Text(
+                          'View Safari',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        onPressed: () {}),
                     SizedBox(height: 10),
                   ],
                 ),
